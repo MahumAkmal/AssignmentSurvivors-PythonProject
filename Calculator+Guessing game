@@ -31,3 +31,33 @@ while True:
             print(a, "/", b, "=", a / b)
     else:
         print("Enter an appropriate operation.") # to avoid user entering invalid inputs
+
+
+
+
+
+import random # importing module for random number generation
+
+def guessing_game():
+    num=random.randint(1,50) # generates a random number between 1-50 inclusive
+    attempts=0
+    print("I have a number between 1 and 50... guess it if you can!")
+    
+    while True: # the loop runs infinitely until it reaches a break statement (where user guesses correctly)
+        guess=int(input("Guess a number (1-50): "))
+        attempts+=1 # increment attempts by 1 for each round, for score system
+        if guess<1 or guess>50:
+            print("Your guess was outside the range! Please try again.") # prompts user for another guess if invalid input
+        elif guess<num:
+            print("Too low! Try again.")
+        elif guess>num:
+            print("Too high! Try again.")
+        else:
+            print(f"Correct! Your score is: {attempts}.") # displays score as the number of attempts it took to guess
+            break
+# To run the guessing game infinitely until user exits by entering 0:   
+while True:
+    guessing_game() 
+    restart=int(input("Would you like to play again? Enter 1 for yes, 0 for no: "))
+    if restart==0:
+        break
